@@ -80,6 +80,7 @@ fn main() -> ! {
         asm!("csrw mideleg,    {}", in(reg) !0);
         asm!("csrw medeleg,    {}", in(reg) !0);
         asm!("csrw mcounteren, {}", in(reg) !0);
+        asm!("csrc 0x7ca, {}", in(reg) 0x6000);
         asm!("csrs 0x7ca, {}", in(reg) 0x22);
         use riscv::register::{medeleg, mtvec};
         medeleg::clear_supervisor_env_call();
